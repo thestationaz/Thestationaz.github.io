@@ -12,7 +12,7 @@
       --radius:14px; --shadow:0 8px 20px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--paper);line-height:1.6}
-    header{background:linear-gradient(180deg,var(--brown-900),var(--brown-700));color:#fff;text-align:center;padding:2.5rem 1rem 2rem;position:sticky;top:0;z-index:5}
+    header{background:linear-gradient(180deg,var(--brown-900),var(--brown-700));color:#fff;text-align:center;padding:2.5rem 1rem 2rem;}
     header h1{margin:0 0 .35rem;font-size:clamp(1.6rem,4.5vw,2.1rem)} header p{margin:.25rem 0 0;opacity:.9}
     .cta-row{margin:1rem auto 0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
     .btn{display:inline-block;padding:.75rem 1.05rem;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--shadow);border:2px solid transparent;transition:.2s;font-size:.95rem}
@@ -33,6 +33,28 @@
     .contact{background:var(--brown-200);padding:2rem 1rem;text-align:center}
     .contact a{color:var(--brown-900);font-weight:600;text-decoration:none} .contact a:hover{text-decoration:underline}
     footer{text-align:center;padding:1rem;font-size:.9rem;color:#6b4e3d;background:#fff5ee}
+    /* Always-visible CTA bar at bottom */
+.sticky-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  background: rgba(60, 42, 31, 0.92);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid #e7d9cf;
+  padding: .6rem .8rem;
+}
+.sticky-cta .row {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex; gap: .6rem;
+}
+.sticky-cta .btn { flex: 1; }
+.sticky-cta .btn.primary { background: #e7d9cf; color: #3d2b1f; }
+.sticky-cta .btn.hollow { border-color: rgba(255,255,255,.7); color: #fff; }
+
+/* Add spacing so bar doesn’t cover content */
+body { padding-bottom: 84px; }
+@media (min-width: 768px) { body { padding-bottom: 76px; } }
   </style>
 </head>
 <body>
