@@ -1,50 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Station Café — El Mirage</title>
-  <meta name="description" content="Coffee, community, and creativity at The Station Café in El Mirage, AZ.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Station — Business Suites in El Mirage</title>
+  <meta name="description" content="The Station hosts local businesses in El Mirage. Lease a 10×10 suite for $700/month. Inside: The Grind Café, Creative Art Tatts, De Jolie Esthetics, The Revival Room." />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; }
-    header { background: #6b4e3d; padding: 2rem; color: white; }
-    nav a { margin: 0 1rem; color: white; text-decoration: none; font-weight: bold; }
-    section { padding: 2rem; }
-    footer { background: #333; color: white; padding: 1rem; }
+    :root{
+      --brown-900:#3d2b1f; --brown-700:#6b4e3d; --brown-200:#e7d9cf;
+      --paper:#fffaf6; --text:#2b2b2b; --white:#fff;
+      --radius:14px; --shadow:0 8px 20px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--paper);line-height:1.6}
+    header{background:linear-gradient(180deg,var(--brown-900),var(--brown-700));color:#fff;text-align:center;padding:2.5rem 1rem 2rem;position:sticky;top:0;z-index:5}
+    header h1{margin:0 0 .35rem;font-size:clamp(1.6rem,4.5vw,2.1rem)} header p{margin:.25rem 0 0;opacity:.9}
+    .cta-row{margin:1rem auto 0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-block;padding:.75rem 1.05rem;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--shadow);border:2px solid transparent;transition:.2s;font-size:.95rem}
+    .btn.primary{background:var(--brown-200);color:var(--brown-900)} .btn.primary:hover{filter:brightness(.97)}
+    .btn.hollow{background:transparent;border-color:rgba(255,255,255,.7);color:#fff} .btn.hollow:hover{background:rgba(255,255,255,.08)}
+    .hero{padding:2rem 1rem;text-align:center;background:linear-gradient(0deg,var(--paper),#fff)}
+    .hero h2{margin:0 0 .5rem;font-size:clamp(1.4rem,4.8vw,2rem);color:var(--brown-900)}
+    .lease{max-width:860px;margin:0 auto 1.5rem;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #efdcd1;padding:1.25rem 1rem;text-align:center}
+    .lease h3{margin:.2rem 0 .4rem;color:var(--brown-900)} .fine{opacity:.85;font-size:.95rem}
+    .grid{display:grid;grid-template-columns:1fr;gap:1rem;padding:1rem;max-width:1000px;margin:0 auto 2rem}
+    @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #efdcd1;overflow:hidden}
+    .card__media{height:160px;background:var(--brown-200);display:grid;place-items:center;color:var(--brown-900);font-weight:700;letter-spacing:.5px;text-align:center;padding:0 .75rem}
+    .card__body{padding:1rem 1.1rem 1.2rem}
+    .card__title{margin:.1rem 0 .25rem;font-size:1.2rem;color:var(--brown-900)}
+    .tag{display:inline-block;background:#f5ebe4;color:#6b4e3d;padding:.2rem .55rem;border-radius:999px;font-size:.78rem;margin:.1rem .35rem .6rem 0}
+    .note{font-size:.9rem;opacity:.8;margin-top:.3rem}
+    .contact{background:var(--brown-200);padding:2rem 1rem;text-align:center}
+    .contact a{color:var(--brown-900);font-weight:600;text-decoration:none} .contact a:hover{text-decoration:underline}
+    footer{text-align:center;padding:1rem;font-size:.9rem;color:#6b4e3d;background:#fff5ee}
   </style>
 </head>
 <body>
   <header>
-    <h1>The Station Café</h1>
-    <p>Coffee • Community • Creativity</p>
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <h1>The Station</h1>
+    <p>Business Suites • Community • El Mirage, AZ</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:thestationsuites@gmail.com?subject=Suite%20Inquiry%20(10x10%20for%20%24700%2Fmo)">Lease a Suite</a>
+      <a class="btn hollow" href="https://instagram.com/the.station.az" target="_blank" rel="noopener">Instagram @the.station.az</a>
+    </div>
   </header>
 
-  <section id="menu">
-    <h2>Menu Highlights</h2>
-    <p><strong>Espresso</strong> — $2.50<br>
-       <strong>Latte</strong> — $4.00<br>
-       <strong>Mocha</strong> — $4.50<br>
-       <strong>Honey Lavender Latte</strong> — $4.75</p>
+  <section class="hero" aria-labelledby="hero-title">
+    <h2 id="hero-title">Multiple businesses, one home.</h2>
+    <p>Welcome to <strong>The Station</strong> — a local hub where coffee, style, and self-care live under one roof. Leasing available now.</p>
   </section>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>The Station is your local café in El Mirage, AZ — serving handcrafted drinks, pastries, and hosting community events. Come sip, connect, and create with us!</p>
+  <section class="lease" aria-labelledby="lease-title">
+    <h3 id="lease-title">Lease a Suite at The Station</h3>
+    <p><strong>10×10 private suites — $700/month</strong></p>
+    <p class="fine">Leasing inquiries go to The Station. For business services (tattoos, café, esthetics), contact those businesses directly via their Instagram links below.</p>
+    <a class="btn primary" href="mailto:thestationsuites@gmail.com?subject=Suite%20Inquiry%20(10x10%20for%20%24700%2Fmo)">Email to Apply</a>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📍 13802 N Verbena St, El Mirage, AZ<br>
-       ☎️ (555) 555-5555<br>
-       📸 <a href="https://instagram.com/thestationaz" target="_blank">@thestationaz</a></p>
+  <section aria-labelledby="biz-title">
+    <h2 id="biz-title" style="text-align:center;color:#3d2b1f;margin:0 0 .3rem;">Who’s Inside The Station</h2>
+    <p style="text-align:center;margin:.2rem 0 1rem;opacity:.85">Tap a card to visit each business. <strong>Please don’t contact The Station for their bookings.</strong></p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card__media">THE GRIND CAFÉ</div>
+        <div class="card__body">
+          <div class="tag">Coffee & Pastries</div>
+          <h3 class="card__title">The Grind Café</h3>
+          <p>Handcrafted espresso, iced drinks, and local vibes.</p>
+          <p class="note">Questions about drinks/menu → contact the café:</p>
+          <a class="btn" href="https://instagram.com/thegrindcafe2025" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">CREATIVE ART TATTS</div>
+        <div class="card__body">
+          <div class="tag">Tattoo Studio</div>
+          <h3 class="card__title">Creative Art Tatts</h3>
+          <p>Custom pieces and flash. Check artist availability/DM on IG.</p>
+          <p class="note">Tattoo bookings → contact the studio:</p>
+          <a class="btn" href="https://instagram.com/creativearttatts" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">DE JOLIE ESTHETICS</div>
+        <div class="card__body">
+          <div class="tag">Skin & Self-Care</div>
+          <h3 class="card__title">De Jolie Esthetics</h3>
+          <p>Facials, skincare, and glow-up services.</p>
+          <p class="note">Services & booking → contact directly:</p>
+          <a class="btn" href="https://instagram.com/dejolie_esthetics" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__media">THE REVIVAL ROOM</div>
+        <div class="card__body">
+          <div class="tag">Vintage & Streetwear</div>
+          <h3 class="card__title">The Revival Room</h3>
+          <p>Curated vintage and streetwear finds — rotating selections.</p>
+          <p class="note">For product questions, contact the shop directly.</p>
+          <!-- Add their IG when ready:
+          <a class="btn" href="https://instagram.com/therevivalroom" target="_blank" rel="noopener">Visit Instagram</a> -->
+        </div>
+      </article>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 The Station Café</p>
-  </footer>
+  <section class="contact" aria-labelledby="contact-title">
+    <h3 id="contact-title">Contact The Station (Leasing)</h3>
+    <p>Email: <a href="mailto:thestationsuites@gmail.com">thestationsuites@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/the.station.az" target="_blank" rel="noopener">@the.station.az</a></p>
+    <p style="margin-top:.6rem;opacity:.85">Address: 13802 N Verbena St, El Mirage, AZ</p>
+    <p><a href="https://maps.google.com/?q=13802+N+Verbena+St,+El+Mirage,+AZ" target="_blank" rel="noopener">Get directions</a></p>
+  </section>
+
+  <footer>© <span id="year"></span> The Station — Business Suites</footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
