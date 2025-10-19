@@ -5,114 +5,195 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Station — Business Suites in El Mirage</title>
   <meta name="description" content="The Station hosts local businesses in El Mirage. Lease a 10×10 suite for $700/month. Inside: The Grind Café, Creative Art Tatts, De Jolie Esthetics, The Revival Room." />
+
   <style>
     :root{
       --brown-900:#3d2b1f; --brown-700:#6b4e3d; --brown-200:#e7d9cf;
       --paper:#fffaf6; --text:#2b2b2b; --white:#fff;
       --radius:14px; --shadow:0 8px 20px rgba(0,0,0,.08);
+      --line:#efdcd1;
     }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--paper);line-height:1.6}
-    header{background:linear-gradient(180deg,var(--brown-900),var(--brown-700));color:#fff;text-align:center;padding:2.5rem 1rem 2rem;}
-    header h1{margin:0 0 .35rem;font-size:clamp(1.6rem,4.5vw,2.1rem)} header p{margin:.25rem 0 0;opacity:.9}
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:var(--paper);
+      line-height:1.6;
+      padding-bottom:84px; /* room for sticky bar */
+    }
+    @media (min-width:768px){ body{ padding-bottom:76px; } }
+
+    /* Header */
+    header{
+      background:linear-gradient(180deg,var(--brown-900),var(--brown-700));
+      color:#fff;text-align:center;padding:2.5rem 1rem 2rem;
+    }
+    header h1{margin:0 0 .35rem;font-size:clamp(1.6rem,4.5vw,2.1rem)}
+    header p{margin:.25rem 0 0;opacity:.9}
     .cta-row{margin:1rem auto 0;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+
+    /* Buttons */
     .btn{display:inline-block;padding:.75rem 1.05rem;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:var(--shadow);border:2px solid transparent;transition:.2s;font-size:.95rem}
-    .btn.primary{background:var(--brown-200);color:var(--brown-900)} .btn.primary:hover{filter:brightness(.97)}
-    .btn.hollow{background:transparent;border-color:rgba(255,255,255,.7);color:#fff} .btn.hollow:hover{background:rgba(255,255,255,.08)}
+    .btn.primary{background:var(--brown-200);color:var(--brown-900)}
+    .btn.primary:hover{filter:brightness(.97)}
+    .btn.hollow{background:transparent;border-color:rgba(255,255,255,.7);color:#fff}
+    .btn.hollow:hover{background:rgba(255,255,255,.08)}
+
+    /* Sections */
     .hero{padding:2rem 1rem;text-align:center;background:linear-gradient(0deg,var(--paper),#fff)}
     .hero h2{margin:0 0 .5rem;font-size:clamp(1.4rem,4.8vw,2rem);color:var(--brown-900)}
-    .lease{max-width:860px;margin:0 auto 1.5rem;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #efdcd1;padding:1.25rem 1rem;text-align:center}
-    .lease h3{margin:.2rem 0 .4rem;color:var(--brown-900)} .fine{opacity:.85;font-size:.95rem}
-    .grid{display:grid;grid-template-columns:1fr;gap:1rem;padding:1rem;max-width:1000px;margin:0 auto 2rem}
-    @media(min-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
-    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #efdcd1;overflow:hidden}
-    .card__media{height:160px;background:var(--brown-200);display:grid;place-items:center;color:var(--brown-900);font-weight:700;letter-spacing:.5px;text-align:center;padding:0 .75rem}
-    .card__body{padding:1rem 1.1rem 1.2rem}
-    .card__title{margin:.1rem 0 .25rem;font-size:1.2rem;color:var(--brown-900)}
+    .lease{
+      max-width:860px;margin:0 auto 1.5rem;background:#fff;border-radius:var(--radius);
+      box-shadow:var(--shadow);border:1px solid var(--line);padding:1.25rem 1rem;text-align:center
+    }
+    .lease h3{margin:.2rem 0 .4rem;color:var(--brown-900)}
+    .fine{opacity:.85;font-size:.95rem}
+
+    /* Grid + Cards */
+    .grid{
+      display:grid;grid-template-columns:1fr;gap:2rem;
+      padding:1rem 1rem 2rem;max-width:1000px;margin:0 auto;
+    }
+    @media(min-width:720px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+
+    .card{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+      border:1px solid var(--line);overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 6px 16px rgba(0,0,0,.12); }
+
+    .card__media{
+      background:#000; /* makes logos on black look right */
+      min-height:180px;
+    }
+    .card__media img{
+      width:100%; height:auto; max-height:300px; object-fit:cover; display:block;
+    }
+    .card__body{ padding:1rem 1.1rem 1.2rem; background:#fff; }
+    .card__title{ margin:.1rem 0 .25rem; font-size:1.2rem; color:var(--brown-900); }
+
     .tag{display:inline-block;background:#f5ebe4;color:#6b4e3d;padding:.2rem .55rem;border-radius:999px;font-size:.78rem;margin:.1rem .35rem .6rem 0}
     .note{font-size:.9rem;opacity:.8;margin-top:.3rem}
+
+    /* Contact section */
     .contact{background:var(--brown-200);padding:2rem 1rem;text-align:center}
-    .contact a{color:var(--brown-900);font-weight:600;text-decoration:none} .contact a:hover{text-decoration:underline}
+    .contact a{color:var(--brown-900);font-weight:600;text-decoration:none}
+    .contact a:hover{text-decoration:underline}
     footer{text-align:center;padding:1rem;font-size:.9rem;color:#6b4e3d;background:#fff5ee}
-    /* Always-visible CTA bar at bottom */
-.sticky-cta {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  z-index: 1000;
-  background: rgba(60, 42, 31, 0.92);
-  backdrop-filter: blur(6px);
-  border-top: 1px solid #e7d9cf;
-  padding: .6rem .8rem;
-}
-.sticky-cta .row {
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex; gap: .6rem;
-}
-.sticky-cta .btn { flex: 1; }
-.sticky-cta .btn.primary { background: #e7d9cf; color: #3d2b1f; }
-.sticky-cta .btn.hollow { border-color: rgba(255,255,255,.7); color: #fff; }
 
-/* Add spacing so bar doesn’t cover content */
-@media (min-width: 768px) { 
-  body { padding-bottom: 76px; } 
-}
+    /* Sticky CTA */
+    .sticky-cta{
+      position:fixed; left:0; right:0; bottom:0; z-index:1000;
+      background:rgba(60,42,31,.92); backdrop-filter:blur(6px);
+      border-top:1px solid var(--line); padding:.6rem .8rem;
+    }
+    .sticky-cta .row{ max-width:900px; margin:0 auto; display:flex; gap:.6rem; }
+    .sticky-cta .btn{ flex:1; }
+    .sticky-cta .btn.primary{ background:var(--brown-200); color:var(--brown-900); }
+    .sticky-cta .btn.hollow{ border-color:rgba(255,255,255,.7); color:#fff; }
+  </style>
+</head>
 
-/* --- Card Spacing & Consistent Layout Fix --- */
-.grid article.card {
-  margin-bottom: 30px;
-}
+<body>
+  <header>
+    <img src="Logo.jpeg" alt="The Station Logo"
+         style="width:100%; max-width:420px; margin:0 auto 1rem; display:block; border-radius:8px;">
+    <p>Business Suites • Community • El Mirage, AZ</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:thestationsuites@gmail.com?subject=Suite%20Inquiry%20(10x10%20for%20%24700%2Fmo)">Lease a Suite</a>
+      <a class="btn hollow" href="https://instagram.com/the.station.az" target="_blank" rel="noopener">Instagram @the.station.az</a>
+    </div>
+  </header>
 
-.card {
-  background: #fff;
-  border: 1px solid #efdcd1;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
+  <section class="hero" aria-labelledby="hero-title">
+    <h2 id="hero-title">Multiple businesses, one home.</h2>
+    <p>Welcome to <strong>The Station</strong> — a local hub where coffee, style, and self-care live under one roof. Leasing available now.</p>
+  </section>
 
-.card__media img {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-  display: block;
-  margin: auto;
-}
+  <section class="lease" aria-labelledby="lease-title">
+    <h3 id="lease-title">Lease a Suite at The Station</h3>
+    <p><strong>Business Suites Available starting at $700/month</strong></p>
+    <p class="fine">Leasing inquiries go to The Station. For business services (tattoos, café, esthetics), contact those businesses directly via their Instagram links below.</p>
+    <a class="btn primary" href="mailto:thestationsuites@gmail.com?subject=Suite%20Inquiry%20(10x10%20for%20%24700%2Fmo)">Email to Apply</a>
+  </section>
 
-</style>  ← line 58 (leave this as is)
-  margin-bottom: 30px; /* adds spacing between cards */
-}
+  <section aria-labelledby="biz-title">
+    <h2 id="biz-title" style="text-align:center;color:#3d2b1f;margin:0 0 .3rem;">Who’s Inside The Station</h2>
+    <p style="text-align:center;margin:.2rem 0 1rem;opacity:.85">Tap a card to visit each business. <strong>Please don’t contact The Station for their bookings.</strong></p>
 
-.card {
-  background: #fff;
-  border: 1px solid #efdcd1;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    <div class="grid">
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
+      <!-- The Grind Cafe -->
+      <article class="card">
+        <div class="card__media">
+          <img src="Imgcoffee.jpeg" alt="The Grind Café">
+        </div>
+        <div class="card__body">
+          <div class="tag">Latina Owned and Operated</div>
+          <h3 class="card__title">The Grind Cafe</h3>
+          <p>Handcrafted espresso, iced drinks, and local vibes.</p>
+          <p class="note">Questions about drinks/menu → contact the cafe:</p>
+          <a class="btn" href="https://instagram.com/thegrindcafe2025" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
 
-fb1d5c413a2b7f8cecf9c94eeca03731b22e3865
+      <!-- Creative Art Tatts -->
+      <article class="card">
+        <div class="card__media" style="background:#e7d9cf; display:grid; place-items:center; min-height:180px;">
+          <span style="font-weight:700; letter-spacing:.06em; color:#3d2b1f;">CREATIVE ART TATS</span>
+        </div>
+        <div class="card__body">
+          <div class="tag">Tattoo Studio</div>
+          <h3 class="card__title">Creative Art Tatts</h3>
+          <p>Custom pieces, Check artist availability/DM on IG.</p>
+          <p class="note">Tattoo bookings → contact the studio:</p>
+          <a class="btn" href="https://instagram.com/creativearttatts" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
+      <!-- De Jolie Esthetics -->
+      <article class="card">
+        <div class="card__media">
+          <img src="IMG_4991.jpeg" alt="De Jolie Esthetics">
+        </div>
+        <div class="card__body">
+          <div class="tag">Skin & Self-Care</div>
+          <h3 class="card__title">De Jolie Esthetics</h3>
+          <p>Facials, skincare, and glow-up services.</p>
+          <p class="note">Services & booking → contact directly:</p>
+          <a class="btn" href="https://instagram.com/dejolie_esthetics" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
+      <!-- The Revival Room -->
+      <article class="card">
+        <div class="card__media">
+          <img src="Vintage Revival Room 2025.png" alt="The Revival Room">
+        </div>
+        <div class="card__body">
+          <div class="tag">Vintage & Streetwear</div>
+          <h3 class="card__title">The Revival Room</h3>
+          <p>Curated vintage and streetwear finds — rotating selections.</p>
+          <p class="note">For product questions, contact the Grind Café.</p>
+          <a class="btn" href="https://instagram.com/therevivalroom" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+      </article>
+
     </div>
   </section>
-<!-- Special Events -->
-<section id="events" class="events" aria-labelledby="events-title" style="padding:2rem; background:#f9f9f9; text-align:center;">
-  <h2 id="events-title" style="color:#3d2b1f; margin:0 0 .6rem;">✨ Special Events Coming Up ✨</h2>
-  <p style="margin:.2rem 0 1.2rem; opacity:.85;">Join us at The Station — 13802 N Verbena St, El Mirage, AZ.</p>
 
-  <!-- Friday Market -->
-  <h3 style="text-align:center; color:#3d2b1f;">2nd Friday Market</h3>
-<img src="Red & Blue Retro Summer Fair Flyer.png" alt="2nd Friday Market Flyer" style="width:100%; max-width:700px; display:block; margin:auto;">
-  <div
-    </a>
-  </div>
-</section>
-</section>
+  <!-- Special Events -->
+  <section id="events" class="events" aria-labelledby="events-title" style="padding:2rem; background:#f9f9f9; text-align:center;">
+    <h2 id="events-title" style="color:#3d2b1f; margin:0 0 .6rem;">✨ Special Events Coming Up ✨</h2>
+    <p style="margin:.2rem 0 1.2rem; opacity:.85;">Join us at The Station — 13802 N Verbena St, El Mirage, AZ.</p>
+
+    <h3 style="text-align:center; color:#3d2b1f;">2nd Friday Market</h3>
+    <img src="Red & Blue Retro Summer Fair Flyer.png" alt="2nd Friday Market Flyer" style="width:100%; max-width:700px; display:block; margin:auto;">
+  </section>
+
   <section class="contact" aria-labelledby="contact-title">
     <h3 id="contact-title">Contact The Station (Leasing)</h3>
     <p>Email: <a href="mailto:thestationsuites@gmail.com">thestationsuites@gmail.com</a></p>
@@ -122,6 +203,15 @@ fb1d5c413a2b7f8cecf9c94eeca03731b22e3865
   </section>
 
   <footer>© <span id="year"></span> The Station — Business Suites</footer>
+
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+  <!-- Sticky bottom CTA -->
+  <div class="sticky-cta" role="region" aria-label="quick actions">
+    <div class="row">
+      <a class="btn hollow" href="https://instagram.com/the.station.az" target="_blank" rel="noopener">Instagram @the.station.az</a>
+      <a class="btn primary" href="mailto:thestationsuites@gmail.com?subject=Suite%20Inquiry%20(10x10%20for%20%24700%2Fmo)">Email to Apply</a>
+    </div>
+  </div>
 </body>
 </html>
