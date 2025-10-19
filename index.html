@@ -55,6 +55,34 @@
 /* Add spacing so bar doesn’t cover content */
 body { padding-bottom: 84px; }
 @media (min-width: 768px) { body { padding-bottom: 76px; } }
+  /* --- Card Spacing & Consistent Layout Fix --- */
+.grid article.card {
+  margin-bottom: 30px; /* adds spacing between cards */
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #efdcd1;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.card__media img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+}
   </style>
 </head>
 <body>
